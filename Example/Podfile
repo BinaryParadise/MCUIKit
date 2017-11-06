@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MCUIKit_Example' do
+  pod 'MCUIKit', :path => '../'
+
+  target 'MCUIKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
