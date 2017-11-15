@@ -95,4 +95,35 @@
     self.frame = rect;
 }
 
+- (CGPoint)leftTop {
+    return self.frame.origin;
+}
+
+#pragma mark - Point
+
+- (CGPoint)rightTop {
+    CGRect frame = self.frame;
+    return CGPointMake(frame.origin.x + frame.size.width, frame.origin.y);
+}
+
+- (void)setRightTop:(CGPoint)rightTop {
+    CGRect frame = self.frame;
+    frame.origin = CGPointMake(rightTop.x - frame.size.width, frame.origin.y + rightTop.y);
+    self.frame = frame;
+}
+
+- (CGPoint)leftBottom {
+    return CGPointMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height);
+}
+
+- (CGPoint)rightBottom {
+    return CGPointMake(self.frame.origin.x + self.frame.size.width, self.frame.origin.y + self.frame.size.height);
+}
+
+- (void)setRightBottom:(CGPoint)rightBottom {
+    CGRect frame = self.frame;
+    frame.origin = CGPointMake(rightBottom.x - frame.size.width, rightBottom.y - frame.size.height);
+    self.frame = frame;
+}
+
 @end

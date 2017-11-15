@@ -18,5 +18,8 @@
 @property (nonatomic) CGFloat height;
 @property (nonatomic) CGPoint origin;
 @property (nonatomic) CGSize size;
+@property (nonatomic, readonly) CGPoint leftBottom;
+@property (nonatomic) CGPoint rightTop;
+@property (nonatomic) CGPoint rightBottom;
 
 @end

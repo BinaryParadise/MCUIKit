@@ -30,6 +30,17 @@
     mcView.backgroundColor = [UIColor orangeColor];
     
     [self.view addSubview:mcView];
+    
+    MCView *leftTopView = [[MCView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
+    leftTopView.rightTop = CGPointMake(mcView.width - 20, 20);
+    leftTopView.backgroundColor = [UIColor purpleColor];
+    
+    [mcView addSubview:leftTopView];
+    
+    MCView *rightTopView = [[MCView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
+    rightTopView.backgroundColor = [UIColor lightGrayColor];
+    rightTopView.rightBottom = CGPointMake(mcView.width - 20, mcView.height - 20);
+    [mcView addSubview:rightTopView];
 }
 
 - (void)didReceiveMemoryWarning
