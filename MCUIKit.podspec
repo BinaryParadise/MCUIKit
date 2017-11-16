@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MCUIKit'
-  s.version          = '0.1.1'
+  s.version          = '0.2'
   s.summary          = 'Additions for iOS UIKit.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -20,6 +20,7 @@ TODO: Add long description of the pod here.
   s.author           = { 'mylcode' => 'mylcode.ali@gmail.com' }
   s.source           = { :git => 'https://github.com/MC-Studio/MCUIKit.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
+  s.default_subspec = 'Category'
   
   s.subspec 'Category' do |ss|
     ss.source_files = 'MCUIKit/Classes/Category/*'

@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'MCUIKit_Example' do
-  pod 'MCUIKit', :path => '../'
+  pod 'MCUIKit/UIKit', :path => '../'
 
   target 'MCUIKit_Tests' do
     inherit! :search_paths
