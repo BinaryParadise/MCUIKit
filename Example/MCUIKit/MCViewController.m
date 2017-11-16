@@ -32,15 +32,28 @@
     [self.view addSubview:mcView];
     
     MCView *leftTopView = [[MCView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
-    leftTopView.rightTop = CGPointMake(mcView.width - 20, 20);
     leftTopView.backgroundColor = [UIColor purpleColor];
-    
     [mcView addSubview:leftTopView];
+    leftTopView.rightTop = CGPointMake(-20, 20);
+    NSLog(@"%@", NSStringFromCGPoint(leftTopView.rightTop));
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.35 animations:^{
+            leftTopView.origin = CGPointMake(20, 20);
+        }];
+    });
     
     MCView *rightTopView = [[MCView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
     rightTopView.backgroundColor = [UIColor lightGrayColor];
-    rightTopView.rightBottom = CGPointMake(mcView.width - 20, mcView.height - 20);
     [mcView addSubview:rightTopView];
+    rightTopView.rightBottom = CGPointMake(-20, -20);
+    NSLog(@"%@", NSStringFromCGPoint(rightTopView.rightBottom));
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.35 animations:^{
+            rightTopView.leftBottom = CGPointMake(20, -20);
+        }];
+    });
 }
 
 - (void)didReceiveMemoryWarning
