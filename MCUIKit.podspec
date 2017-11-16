@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MCUIKit'
-  s.version          = '0.2'
+  s.version          = '0.2.0'
   s.summary          = 'Additions for iOS UIKit.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
