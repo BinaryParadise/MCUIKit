@@ -99,30 +99,44 @@
     return self.frame.origin;
 }
 
-#pragma mark - Point
+#pragma mark - 以指定原点相对位置计算
 
-- (CGPoint)rightTop {
-    CGRect frame = self.frame;
-    return CGPointMake(frame.origin.x + frame.size.width, frame.origin.y);
+- (CGPoint)leftBottom {
+    NSAssert(self.superview, @"need a superview!");
+    return CGPointMake(self.frame.origin.x, self.superview.frame.size.height - self.frame.origin.y - self.frame.size
+                       .height);
 }
 
-- (void)setRightTop:(CGPoint)rightTop {
+- (void)setLeftBottom:(CGPoint)leftBottom {
+    NSAssert(self.superview, @"need a superview!");
     CGRect frame = self.frame;
-    frame.origin = CGPointMake(rightTop.x - frame.size.width, frame.origin.y + rightTop.y);
+    frame.origin = CGPointMake(leftBottom.x, self.superview.frame.size.height + leftBottom.y - frame.size.height);
     self.frame = frame;
 }
 
-- (CGPoint)leftBottom {
-    return CGPointMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height);
+- (CGPoint)rightTop {
+    NSAssert(self.superview, @"need a superview!");
+    CGRect frame = self.frame;
+    return CGPointMake(frame.origin.x + frame.size.width - self.superview.frame.size.width, frame.origin.y);
+}
+
+- (void)setRightTop:(CGPoint)rightTop {
+    NSAssert(self.superview, @"need a superview!");
+    CGRect frame = self.frame;
+    frame.origin = CGPointMake(self.superview.frame.size.width + rightTop.x - frame.size.width, rightTop.y);
+    self.frame = frame;
 }
 
 - (CGPoint)rightBottom {
-    return CGPointMake(self.frame.origin.x + self.frame.size.width, self.frame.origin.y + self.frame.size.height);
+    NSAssert(self.superview, @"need a superview!");
+    CGRect frame = self.frame;
+    return CGPointMake(frame.origin.x + frame.size.width - self.superview.frame.size.width, self.superview.frame.size.height - frame.origin.y - frame.size.height);
 }
 
 - (void)setRightBottom:(CGPoint)rightBottom {
+    NSAssert(self.superview, @"need a superview!");
     CGRect frame = self.frame;
-    frame.origin = CGPointMake(rightBottom.x - frame.size.width, rightBottom.y - frame.size.height);
+    frame.origin = CGPointMake(self.superview.frame.size.width + rightBottom.x - frame.size.width, self.superview.frame.size.height + rightBottom.y - frame.size.height);
     self.frame = frame;
 }
 
