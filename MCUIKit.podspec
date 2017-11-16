@@ -20,6 +20,7 @@ TODO: Add long description of the pod here.
   s.author           = { 'mylcode' => 'mylcode.ali@gmail.com' }
   s.source           = { :git => 'https://github.com/MC-Studio/MCUIKit.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
+  s.default_subspec = 'Category'
   
   s.subspec 'Category' do |ss|
     ss.source_files = 'MCUIKit/Classes/Category/*'
@@ -27,7 +28,7 @@ TODO: Add long description of the pod here.
 
   s.subspec 'UIKit' do |ss|
     ss.source_files = 'MCUIKit/Classes/UIKit/*'
-    ss.dependency 'MCUIKit/Category'
+    ss.dependency 'MCUIKit/Category', '~> 0.1.1'
   end
 
 end
