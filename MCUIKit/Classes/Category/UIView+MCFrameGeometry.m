@@ -32,17 +32,6 @@
     self.frame = rect;
 }
 
-- (CGFloat)width {
-    return self.frame.size.width;
-}
-
-- (void)setWidth:(CGFloat)width {
-    NSAssert(!isnan(width), @"Not a Number");
-    CGRect rect = self.frame;
-    rect.size.width = width;
-    self.frame = rect;
-}
-
 - (CGFloat)bottom {
     return self.frame.origin.y + self.frame.size.height;
 }
@@ -60,8 +49,19 @@
 - (void)setRight:(CGFloat)right {
     NSAssert(!isnan(right), @"Not a Number");
     CGRect newFrame = self.frame;
-    newFrame.origin.x = right - (newFrame.origin.x + newFrame.size.width);
+    newFrame.origin.x = right - newFrame.size.width;
     self.frame = newFrame;
+}
+
+- (CGFloat)width {
+    return self.frame.size.width;
+}
+
+- (void)setWidth:(CGFloat)width {
+    NSAssert(!isnan(width), @"Not a Number");
+    CGRect rect = self.frame;
+    rect.size.width = width;
+    self.frame = rect;
 }
 
 - (CGFloat)height {
