@@ -1,6 +1,6 @@
 PODS:
-  - MCUIKit/Category (0.2.1)
-  - MCUIKit/UIKit (0.2.1):
+  - MCUIKit/Category (0.2.2)
+  - MCUIKit/UIKit (0.2.2):
     - MCUIKit/Category
 
 DEPENDENCIES:
@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MCUIKit: 1380b91b8e610ecf96e7600fabbaf54df7488757
+  MCUIKit: 77baf76b028ed17c2dd1a88100110ca0f3db0eea
 
 PODFILE CHECKSUM: ae3019e8176c6b6ec77b87958a319cf867dfeabd
 
