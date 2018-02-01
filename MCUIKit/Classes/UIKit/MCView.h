@@ -17,4 +17,9 @@
 
 @interface MCView : UIView
 
+/**
+ 配置视图
+ */
+- (void)configView;
+
 @end
