@@ -12,9 +12,6 @@
 #define MCScreenWidth     [UIScreen mainScreen].applicationFrame.size.width
 #define MCScreenHeight    [UIScreen mainScreen].applicationFrame.size.height
 
-#define MCHexColor(hexColor) \
-[UIColor colorWithRed:((float)((hexColor & 0xFF0000) >> 16))/255.0 green:((float)((hexColor & 0xFF00) >> 8))/255.0 blue:((float)(hexColor & 0xFF))/255.0 alpha:1.0]
-
 @interface MCView : UIView
 
 /**

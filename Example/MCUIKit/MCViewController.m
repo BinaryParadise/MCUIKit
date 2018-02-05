@@ -8,6 +8,7 @@
 
 #import "MCViewController.h"
 #import "MCView.h"
+#import <MCUIKit/MCUIKit-umbrella.h>
 
 @interface MCViewController ()
 
@@ -23,6 +24,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = MCHexColor(0x8c8c8c);
     
     _mainView.left = 5;
     _mainView.top = 88;

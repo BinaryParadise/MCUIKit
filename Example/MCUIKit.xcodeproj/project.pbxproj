@@ -65,6 +65,8 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C56021BA1FE39E1600B32164 /* UIImage+UIColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+UIColor.h"; path = "../../MCUIKit/Classes/Category/UIImage+UIColor.h"; sourceTree = "<group>"; };
 		C56021BB1FE39E1600B32164 /* UIImage+UIColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+UIColor.m"; path = "../../MCUIKit/Classes/Category/UIImage+UIColor.m"; sourceTree = "<group>"; };
+		C59580D62027F30600C2331A /* UIColor+MCExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIColor+MCExtension.h"; path = "../../MCUIKit/Classes/Category/UIColor+MCExtension.h"; sourceTree = "<group>"; };
+		C59580D72027F30600C2331A /* UIColor+MCExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MCExtension.m"; path = "../../MCUIKit/Classes/Category/UIColor+MCExtension.m"; sourceTree = "<group>"; };
 		D634AB0EE5174FEA8125F1A9 /* Pods-MCUIKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCUIKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MCUIKit_Example/Pods-MCUIKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DBACFE71E913B929F7671795 /* Pods-MCUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCUIKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCUIKit_Tests/Pods-MCUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F24DFB5372CC655F7CF315D8 /* Pods-MCUIKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCUIKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MCUIKit_Example/Pods-MCUIKit_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +158,8 @@
 				6003F594195388D20070C39A /* Supporting Files */,
 				C56021BA1FE39E1600B32164 /* UIImage+UIColor.h */,
 				C56021BB1FE39E1600B32164 /* UIImage+UIColor.m */,
+				C59580D62027F30600C2331A /* UIColor+MCExtension.h */,
+				C59580D72027F30600C2331A /* UIColor+MCExtension.m */,
 			);
 			name = "Example for MCUIKit";
 			path = MCUIKit;
