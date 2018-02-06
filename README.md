@@ -8,7 +8,13 @@ MCUIKit
 
 包含UIKit基础组件库、分类、扩展等
 
-## Requirements
+## 功能
+
+| 目录 | 说明 |
+| --- | --- |
+| UIKit | UIKit相关 |
+| Gesonry | 手势相关 |
+| Category | 分类 |
 
 ## Installation
 

@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "UIView+MCFrameGeometry.h"
+#import "Gesonry.h"
 
-#define MCScreenWidth     [UIScreen mainScreen].applicationFrame.size.width
-#define MCScreenHeight    [UIScreen mainScreen].applicationFrame.size.height
+#define MCAnimationDuration 0.25    //默认动画时间
+#define MCScreenWidth       [UIScreen mainScreen].applicationFrame.size.width
+#define MCScreenHeight      [UIScreen mainScreen].applicationFrame.size.height
 
 @interface MCView : UIView
 

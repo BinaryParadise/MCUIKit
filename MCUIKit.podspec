@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MCUIKit'
-  s.version          = '0.2.2'
+  s.version          = '0.2.3'
   s.summary          = 'Additions for iOS UIKit.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -20,15 +20,20 @@ TODO: Add long description of the pod here.
   s.author           = { 'mylcode' => 'mylcode.ali@gmail.com' }
   s.source           = { :git => 'https://github.com/MC-Studio/MCUIKit.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
-  s.default_subspec = 'Category'
+  s.default_subspec = 'UIKit'
   
   s.subspec 'Category' do |ss|
     ss.source_files = 'MCUIKit/Classes/Category/*'
   end
 
+  s.subspec 'Gesonry' do |ss|
+    ss.source_files = 'MCUIKit/Classes/Gesonry/*'
+  end
+
   s.subspec 'UIKit' do |ss|
     ss.source_files = 'MCUIKit/Classes/UIKit/*'
     ss.dependency 'MCUIKit/Category'
+    ss.dependency 'MCUIKit/Gesonry'
   end
 
 end
