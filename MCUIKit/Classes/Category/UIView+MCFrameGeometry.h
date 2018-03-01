@@ -8,61 +8,81 @@
 
 #import <UIKit/UIKit.h>
 
+#define MCPREFIX_FRAME_PROPERTY(type,name) \
+@property (nonatomic, assign) type mc##name;
+
+#define mcTop           mcTop
+#define mcLeft          mcLeft
+#define mcBottom        mcBottom
+#define mcRight         mcRight
+#define mcWidth         mcWidth
+#define mcHeight        mcHeight
+#define mcOrigin        mcOrigin
+#define mcSize          mcSize
+#define mcHeight        mcHeight
+#define mcHeight        mcHeight
+#define LeftBottom      mcLeftBottom
+#define mcRightTop      mcRightTop
+#define mcRightBottom   mcRightBottom
+
+/**
+ frame扩展属性：mc+名称
+ */
 @interface UIView (MCFrameGeometry)
 
 /**
  视图y坐标
  */
-@property (nonatomic) CGFloat mcTop;
+MCPREFIX_FRAME_PROPERTY(CGFloat,Top)
 
 /**
  视图x坐标
  */
-@property (nonatomic) CGFloat mcLeft;
+MCPREFIX_FRAME_PROPERTY(CGFloat,Left)
 
 /**
  视图底部坐标
  */
-@property (nonatomic) CGFloat mcBottom;
+MCPREFIX_FRAME_PROPERTY(CGFloat,Bottom)
 
 /**
  视图右边坐标
  */
-@property (nonatomic) CGFloat mcRight;
+MCPREFIX_FRAME_PROPERTY(CGFloat,Right)
 
 /**
  视图宽度
  */
-@property (nonatomic) CGFloat mcWidth;
+MCPREFIX_FRAME_PROPERTY(CGFloat,Width)
 
 /**
  视图高度
  */
-@property (nonatomic) CGFloat mcHeight;
+MCPREFIX_FRAME_PROPERTY(CGFloat,Height)
 
 /**
  视图原点坐标
  */
-@property (nonatomic) CGPoint mcOrigin;
+MCPREFIX_FRAME_PROPERTY(CGPoint,Origin)
 
 /**
  视图尺寸
  */
-@property (nonatomic) CGSize mcSize;
+MCPREFIX_FRAME_PROPERTY(CGSize,Size)
 
 /**
  视图以左下角为原点相对superView的坐标，例如(10, 10)实际表示(10, superView.heigth + 10)
  */
-@property (nonatomic) CGPoint mcLeftBottom;
+MCPREFIX_FRAME_PROPERTY(CGPoint,LeftBottom)
 
 /**
  视图以右上角为原点相对superView的坐标
  */
-@property (nonatomic) CGPoint mcRightTop;
+MCPREFIX_FRAME_PROPERTY(CGPoint,RightTop)
 
 /**
  视图以右下角为原点相对superView的坐标
  */
-@property (nonatomic) CGPoint mcRightBottom;
+MCPREFIX_FRAME_PROPERTY(CGPoint,RightBottom)
 
 @end

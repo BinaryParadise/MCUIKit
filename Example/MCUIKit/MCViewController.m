@@ -7,8 +7,12 @@
 //
 
 #import "MCViewController.h"
+#import "UIColor+MCExtension.h"
+#import "UIImage+UIColor.h"
+#import "UIView+MCFrameGeometry.h"
+#import "Gesonry.h"
+#import "UIView+GESAdditions.h"
 #import "MCView.h"
-#import <MCUIKit/MCUIKit-umbrella.h>
 
 @interface MCViewController ()
 
@@ -26,7 +30,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = MCHexColor(0x8c8c8c);
-    
     _mainView.mcLeft = 16;
     _mainView.mcTop = 88;
     _mainView.mcWidth = self.view.mcWidth - 16*2;
