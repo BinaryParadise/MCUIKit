@@ -10,130 +10,126 @@
 
 @implementation UIView (MCFrameGeometry)
 
-- (CGFloat)top {
+- (CGFloat)mcTop {
     return self.frame.origin.y;
 }
 
-- (void)setTop:(CGFloat)top {
+- (void)setMcTop:(CGFloat)top {
     NSAssert(!isnan(top), @"Not a Number");
     CGRect rect = self.frame;
     rect.origin.y = top;
     self.frame = rect;
 }
 
-- (CGFloat)left {
+- (CGFloat)mcLeft {
     return self.frame.origin.x;
 }
 
-- (void)setLeft:(CGFloat)left {
+- (void)setMcLeft:(CGFloat)left {
     NSAssert(!isnan(left), @"Not a Number");
     CGRect rect = self.frame;
     rect.origin.x = left;
     self.frame = rect;
 }
 
-- (CGFloat)bottom {
+- (CGFloat)mcBottom {
     return self.frame.origin.y + self.frame.size.height;
 }
 
-- (void)setBottom:(CGFloat)bottom {
+- (void)setMcBottom:(CGFloat)bottom {
     CGRect newFrame = self.frame;
     newFrame.origin.y = bottom - newFrame.size.height;
     self.frame = newFrame;
 }
 
-- (CGFloat)right {
+- (CGFloat)mcRight {
     return self.frame.origin.x + self.frame.size.width;
 }
 
-- (void)setRight:(CGFloat)right {
+- (void)setMcRight:(CGFloat)right {
     NSAssert(!isnan(right), @"Not a Number");
     CGRect newFrame = self.frame;
     newFrame.origin.x = right - newFrame.size.width;
     self.frame = newFrame;
 }
 
-- (CGFloat)width {
+- (CGFloat)mcWidth {
     return self.frame.size.width;
 }
 
-- (void)setWidth:(CGFloat)width {
+- (void)setMcWidth:(CGFloat)width {
     NSAssert(!isnan(width), @"Not a Number");
     CGRect rect = self.frame;
     rect.size.width = width;
     self.frame = rect;
 }
 
-- (CGFloat)height {
+- (CGFloat)mcHeight {
     return self.frame.size.height;
 }
 
-- (void)setHeight:(CGFloat)height {
+- (void)setMcHeight:(CGFloat)height {
     NSAssert(!isnan(height), @"Not a Number");
     CGRect rect = self.frame;
     rect.size.height = height;
     self.frame = rect;
 }
 
-- (CGPoint)origin {
+- (CGPoint)mcOrigin {
     return self.frame.origin;
 }
 
-- (void)setOrigin:(CGPoint)origin {
+- (void)setMcOrigin:(CGPoint)origin {
     CGRect rect = self.frame;
     rect.origin = origin;
     self.frame = rect;
 }
 
-- (CGSize)size {
+- (CGSize)mcSize {
     return self.frame.size;
 }
 
-- (void)setSize:(CGSize)size {
+- (void)setMcSize:(CGSize)size {
     CGRect rect = self.frame;
     rect.size = size;
     self.frame = rect;
 }
 
-- (CGPoint)leftTop {
-    return self.frame.origin;
-}
-
 #pragma mark - 以指定原点相对位置计算
 
-- (CGPoint)leftBottom {
+- (CGPoint)mcLeftBottom {
     NSAssert(self.superview, @"need a superview!");
     return CGPointMake(self.frame.origin.x, self.superview.frame.size.height - self.frame.origin.y - self.frame.size
                        .height);
 }
 
-- (void)setLeftBottom:(CGPoint)leftBottom {
+- (void)setMcLeftBottom:(CGPoint)leftBottom {
     NSAssert(self.superview, @"need a superview!");
     CGRect frame = self.frame;
     frame.origin = CGPointMake(leftBottom.x, self.superview.frame.size.height + leftBottom.y - frame.size.height);
     self.frame = frame;
 }
 
-- (CGPoint)rightTop {
+- (CGPoint)mcRightTop {
     NSAssert(self.superview, @"need a superview!");
     CGRect frame = self.frame;
     return CGPointMake(frame.origin.x + frame.size.width - self.superview.frame.size.width, frame.origin.y);
 }
 
-- (void)setRightTop:(CGPoint)rightTop {
+- (void)setMcRightTop:(CGPoint)rightTop {
     NSAssert(self.superview, @"need a superview!");
     CGRect frame = self.frame;
     frame.origin = CGPointMake(self.superview.frame.size.width + rightTop.x - frame.size.width, rightTop.y);
     self.frame = frame;
 }
 
-- (CGPoint)rightBottom {
+- (CGPoint)mcRightBottom {
     NSAssert(self.superview, @"need a superview!");
     CGRect frame = self.frame;
     return CGPointMake(frame.origin.x + frame.size.width - self.superview.frame.size.width, self.superview.frame.size.height - frame.origin.y - frame.size.height);
 }
 
-- (void)setRightBottom:(CGPoint)rightBottom {
+- (void)setMcRightBottom:(CGPoint)rightBottom {
     NSAssert(self.superview, @"need a superview!");
     CGRect frame = self.frame;
     frame.origin = CGPointMake(self.superview.frame.size.width + rightBottom.x - frame.size.width, self.superview.frame.size.height + rightBottom.y - frame.size.height);
