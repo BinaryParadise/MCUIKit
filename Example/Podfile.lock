@@ -1,7 +1,7 @@
 PODS:
-  - MCUIKit/Category (0.2.3)
-  - MCUIKit/Gesonry (0.2.3)
-  - MCUIKit/UIKit (0.2.3):
+  - MCUIKit/Category (0.3.0)
+  - MCUIKit/Gesonry (0.3.0)
+  - MCUIKit/UIKit (0.3.0):
     - MCUIKit/Category
     - MCUIKit/Gesonry
 
@@ -13,7 +13,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  MCUIKit: 1386da2dce567a5f50f299878652821a099e386a
+  MCUIKit: 4d9fb8d30b0cf44bf99605ecd248a3092d6f4e13
 
 PODFILE CHECKSUM: ae3019e8176c6b6ec77b87958a319cf867dfeabd
 

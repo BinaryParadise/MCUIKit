@@ -27,20 +27,20 @@
     
     self.view.backgroundColor = MCHexColor(0x8c8c8c);
     
-    _mainView.left = 5;
-    _mainView.top = 88;
-    _mainView.width = self.view.width - 12*2;
-    _mainView.height = self.view.height - 88;
+    _mainView.mcLeft = 16;
+    _mainView.mcTop = 88;
+    _mainView.mcWidth = self.view.mcWidth - 16*2;
+    _mainView.mcHeight = self.view.mcHeight - 88 - 49;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.35 animations:^{
-            _view1.right = _mainView.width - 20;
+            _view1.mcRight = _mainView.mcWidth - 20;
         }];
     });
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:0.35 animations:^{
-            _view2.leftBottom = CGPointMake(20, -20);
+            _view2.mcLeftBottom = CGPointMake(20, -20);
         }];
     });
 }
