@@ -6,9 +6,9 @@
 //  Copyright © 2016年 MC-Studio. All rights reserved.
 //
 
-#import "UIView+GESAdditions.h"
+#import "UIView+Gesonry.h"
 
-@implementation UIView (GESAdditions)
+@implementation UIView (Gesonry)
 
 - (id(^)(id,SEL))ges_add:(Class)cls {
     return ^(id target,SEL action) {

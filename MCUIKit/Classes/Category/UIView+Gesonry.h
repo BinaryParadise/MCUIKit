@@ -13,7 +13,7 @@
  *  使用方法ges_手势类型(target,SEL)
  *  内部自动设置userInteractionEnabled = YES
  */
-@interface UIView (GESAdditions)
+@interface UIView (Gesonry)
 
 /**
  *  添加点按手势
