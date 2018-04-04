@@ -7,12 +7,7 @@
 //
 
 #import "MCViewController.h"
-#import "UIColor+MCExtension.h"
-#import "UIImage+UIColor.h"
-#import "UIView+MCFrameGeometry.h"
-#import "Gesonry.h"
-#import "UIView+GESAdditions.h"
-#import "MCView.h"
+#import <MCUIKit/MCUIKit.h>
 
 @interface MCViewController ()
 

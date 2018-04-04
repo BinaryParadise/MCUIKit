@@ -3,7 +3,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'MCUIKit_Example' do
-  pod 'MCUIKit/UIKit', :path => '../'
+  pod 'MCUIKit', :path => '../'
 
   target 'MCUIKit_Tests' do
     inherit! :search_paths
