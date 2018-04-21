@@ -3,12 +3,9 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
-xcode_workspace: Exmple/MCUIKit.xcworkspace
-xcode_scheme : MCUIKit_Tests
-cache: cocoapods
-podfile: Example/Podfile
+notifications:
+  email: false
 before_install:
-- pod install
+- pod install --project-directory=Example
 script: 
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/MCUIKit.xcworkspace -scheme MCUIKit-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint --use-libraries --allow-warnings
+#- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/MCUIKit.xcworkspace -scheme MCUIKit_Example -sdk iphonesimulator -destination 'name=iPhone 6s' ONLY_ACTIVE_ARCH=NO | xcpretty -c
