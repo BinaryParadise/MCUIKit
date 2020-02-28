@@ -25,6 +25,21 @@
 #define mcRightTop      mcRightTop
 #define mcRightBottom   mcRightBottom
 
+typedef void(^MCConstraintBlock)(UIView *toView, CGFloat offset);
+
+@interface MCViewConstraint : NSObject
+
+@property (nonatomic, weak) UIView *firstItem;
+@property (nonatomic, weak) UIView *secondItem;
+@property (nonatomic, copy) MCConstraintBlock constraintBlock;
+
+- (instancetype)initWithView:(UIView *)view layoutConstraint:(MCConstraintBlock)block;
+
+- (MCViewConstraint * (^)(id))equalTo;
+- (MCViewConstraint * (^)(CGFloat))offset;
+
+@end
+
 /**
  frame扩展属性：mc+名称
  */
@@ -84,5 +99,11 @@ MCPREFIX_FRAME_PROPERTY(CGPoint,RightTop)
  视图以右下角为原点相对superView的坐标
  */
 MCPREFIX_FRAME_PROPERTY(CGPoint,RightBottom)
+
+/// 水平x坐标（实际设置frame.origin.x）
+- (MCViewConstraint *)mcCenterX;
+
+/// 垂直y坐标（实际设置frame.origin.y）
+- (MCViewConstraint *)mCCenterY;
 
 @end

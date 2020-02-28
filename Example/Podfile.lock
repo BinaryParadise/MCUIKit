@@ -1,16 +1,25 @@
 PODS:
-  - MCUIKit (0.3.1)
+  - MCUIKit (0.3.2):
+    - SDWebImage
+  - SDWebImage (5.5.2):
+    - SDWebImage/Core (= 5.5.2)
+  - SDWebImage/Core (5.5.2)
 
 DEPENDENCIES:
   - MCUIKit (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - SDWebImage
 
 EXTERNAL SOURCES:
   MCUIKit:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MCUIKit: c9673096dc3af8a9950b4ac078b143582b7e6970
+  MCUIKit: 67f3060edab3fdd57bc2bca0c732fd4191887db9
+  SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
 
 PODFILE CHECKSUM: 6675c9900cf94928de3e6ae4e7cde6a4d63fe2c8
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

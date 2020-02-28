@@ -10,3 +10,4 @@
 #import <MCUIKit/UIImage+UIColor.h>
 #import <MCUIKit/UIView+MCFrameGeometry.h>
 #import <MCUIKit/UIView+Gesonry.h>
+#import <MCUIKit/BPCycleScrollView.h>

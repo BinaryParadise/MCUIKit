@@ -15,6 +15,7 @@ MCUIKit
 | UIKit | UIKit相关 |
 | Gesonry | 手势相关 |
 | Category | 分类 |
+|BPCycleScrollView| 自动轮播|
 
 ## Installation
 

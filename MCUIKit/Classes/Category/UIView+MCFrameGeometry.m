@@ -2,11 +2,42 @@
 //  UIView+MCFrameGeometry.m
 //  MCUIKit
 //
-//  Created by mylcode on 2017/11/6.
+//  Created by Rake Yang on 2017/11/6.
 //  Copyright © 2017年 MC-Studio. All rights reserved.
 //
 
 #import "UIView+MCFrameGeometry.h"
+
+@implementation MCViewConstraint
+
+- (instancetype)initWithView:(UIView *)view layoutConstraint:(MCConstraintBlock)block {
+    if (self = [super init]) {
+        self.firstItem = view;
+        self.constraintBlock = block;
+    }
+    return self;
+}
+
+- (MCViewConstraint *(^)(id))equalTo {
+    return ^id(UIView *toView) {
+        self.secondItem = toView;
+        self.constraintBlock(toView, 0);
+        return self;
+    };
+}
+
+- (MCViewConstraint *(^)(CGFloat))offset {
+    return ^id(CGFloat offset) {
+        self.constraintBlock(self.secondItem, offset);
+        return self;
+    };
+}
+
+- (void)dealloc {
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+
+@end
 
 @implementation UIView (MCFrameGeometry)
 
@@ -134,6 +165,18 @@
     CGRect frame = self.frame;
     frame.origin = CGPointMake(self.superview.frame.size.width + rightBottom.x - frame.size.width, self.superview.frame.size.height + rightBottom.y - frame.size.height);
     self.frame = frame;
+}
+
+- (MCViewConstraint *)mcCenterX {
+    return [[MCViewConstraint alloc] initWithView:self layoutConstraint:^(UIView *toView, CGFloat offset) {
+        self.mcLeft = (toView.mcWidth-self.mcWidth)/2.0 + offset;
+    }];
+}
+
+- (MCViewConstraint *)mCCenterY {
+    return [[MCViewConstraint alloc] initWithView:self layoutConstraint:^(UIView *toView, CGFloat offset) {
+        self.mcTop = (toView.mcHeight-self.mcHeight)/2.0 + offset;
+    }];
 }
 
 @end
