@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  分页相关配置
@@ -18,11 +19,10 @@
 /// 距离底部间隔，默认12
 @property (nonatomic, assign) CGFloat bottomOffset;
 
-
 /// 分页指示器图片，默认nil
-@property (nonatomic, nonnull, copy) UIImage *pageIndicatorImage;
+@property (nonatomic, nonnull, strong) UIImage *pageIndicatorImage;
 
 /// 当前页指示器图片，默认nil
-@property (nonatomic, nonnull, copy) UIImage *currentPageIndicatorImage;
+@property (nonatomic, nonnull, strong) UIImage *currentPageIndicatorImage;
 
 @end

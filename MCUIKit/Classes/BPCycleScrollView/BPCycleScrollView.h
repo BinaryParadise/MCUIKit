@@ -9,6 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "BPCyclePageControl.h"
 
+@class BPCycleScrollView;
+
+@protocol BPCycleScrollViewDelegate <NSObject>
+
+@optional
+
+/** 点击图片回调 */
+- (void)cycleScrollView:(BPCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index;
+
+/** 图片滚动回调 */
+- (void)cycleScrollView:(BPCycleScrollView *)cycleScrollView didScrollToIndex:(NSInteger)index;
+
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BPCycleScrollView : UIView
@@ -27,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL infiniteLoop;
 
 @property (nonatomic, strong, readonly) BPCyclePageControl *pageControl;
+
+@property (nonatomic, weak) id<BPCycleScrollViewDelegate> delegate;
+
 
 @end
 

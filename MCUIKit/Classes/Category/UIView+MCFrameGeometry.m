@@ -33,10 +33,6 @@
     };
 }
 
-- (void)dealloc {
-    NSLog(@"%s", __PRETTY_FUNCTION__);
-}
-
 @end
 
 @implementation UIView (MCFrameGeometry)

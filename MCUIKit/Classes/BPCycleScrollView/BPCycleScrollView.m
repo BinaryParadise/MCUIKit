@@ -72,10 +72,6 @@
     self.imageGroup = marr;
     
     [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width, 0)];
-    self.pageControl.numberOfPages = imageURLs.count;
-    self.pageControl.mcSize = [self.pageControl sizeForNumberOfPages:imageURLs.count];
-    self.pageControl.mcBottom = self.mcHeight - self.pageControl.config.bottomOffset;
-    self.pageControl.mcCenterX.equalTo(self);
     [self configTimer];
 }
 
@@ -94,6 +90,16 @@
     [self configTimer];
 }
 
+#pragma mark - Actions
+
+//自动显示下一个
+- (void)showNext {
+    //手指拖拽是禁止自动轮播
+    if (self.collectionView.isDragging) {return;}
+    CGFloat targetX =  self.collectionView.contentOffset.x + self.collectionView.bounds.size.width;
+    [self.collectionView setContentOffset:CGPointMake(targetX, 0) animated:true];
+}
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -107,18 +113,20 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.delegate respondsToSelector:@selector(cycleScrollView:didSelectItemAtIndex:)]) {
+        [self.delegate cycleScrollView:self didSelectItemAtIndex:self.pageControl.currentPage];
+    }
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.flowLayout.itemSize = self.frame.size;
     self.collectionView.frame = self.bounds;
-}
-
-//自动显示下一个
-- (void)showNext {
-    //手指拖拽是禁止自动轮播
-    if (self.collectionView.isDragging) {return;}
-    CGFloat targetX =  self.collectionView.contentOffset.x + self.collectionView.bounds.size.width;
-    [self.collectionView setContentOffset:CGPointMake(targetX, 0) animated:true];
+    self.pageControl.numberOfPages = self.imageURLs.count;
+    self.pageControl.mcSize = [self.pageControl sizeForNumberOfPages:self.imageURLs.count];
+    self.pageControl.mcBottom = self.mcHeight - self.pageControl.config.bottomOffset;
+    self.pageControl.mcCenterX.equalTo(self);
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -149,6 +157,10 @@
         self.pageControl.currentPage = 0;
     }else{
         self.pageControl.currentPage = page - 1;
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(cycleScrollView:didScrollToIndex:)]) {
+        [self.delegate cycleScrollView:self didScrollToIndex:self.pageControl.currentPage];
     }
 }
 
