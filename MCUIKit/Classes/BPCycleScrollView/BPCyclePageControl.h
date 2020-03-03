@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL hidesForSinglePage;
 
 
-/// 当前所在页，默认为0
+/// 当前所在页，0...numberOfPages-1
 @property(nonatomic) NSInteger currentPage;
 
 @property (nonatomic, strong) BPCycleConfig *config;

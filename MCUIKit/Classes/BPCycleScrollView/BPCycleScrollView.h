@@ -33,7 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 是否自动滚动，默认为YES
 @property (nonatomic, assign) BOOL autoScroll;
 
-@property (nonatomic, copy) NSArray<NSString *> *imageURLs;
+/// 原始图片地址数组
+@property (nonatomic, copy) NSArray<NSString *> *originImageURLs;
 
 @property (nonatomic, copy) UIImage *placeholderImage;
 

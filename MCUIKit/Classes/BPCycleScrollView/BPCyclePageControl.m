@@ -27,15 +27,15 @@
 }
 
 - (void)setNumberOfPages:(NSInteger)numberOfPages {
-    _numberOfPages = numberOfPages;
+    _numberOfPages = MAX(numberOfPages, 0);
     if (self.hidesForSinglePage) {
-        self.hidden = numberOfPages <= 1;
+        self.hidden = _numberOfPages <= 1;
     }
     self.currentPage = 0;
 }
 
 - (void)setCurrentPage:(NSInteger)currentPage {    
-    _currentPage = currentPage;
+    _currentPage = MAX(MIN(currentPage, self.numberOfPages-1), 0);
     [self configView];
 }
 

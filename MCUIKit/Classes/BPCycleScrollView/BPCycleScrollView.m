@@ -22,7 +22,6 @@
 @property (nonatomic, strong) BPCyclePageControl *pageControl;
 @property (nonatomic, strong) NSArray<NSString *> *imageGroup;
 
-
 @end
 
 @implementation BPCycleScrollView
@@ -31,7 +30,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _autoScrollTimeInterval = 3.0;
+        _autoScrollTimeInterval = 30.0;
         _autoScroll = YES;
         _infiniteLoop = YES;
         [self configView];
@@ -62,12 +61,12 @@
 }
 
 //设置数据时在第一个之前和最后一个之后分别插入数据
-- (void)setImageURLs:(NSArray<NSString *> *)imageURLs {
-    _imageURLs = imageURLs;
-    NSMutableArray *marr = [NSMutableArray arrayWithArray:imageURLs];
-    if (imageURLs.count > 1) {
-        [marr addObject:imageURLs.firstObject];
-        [marr insertObject:imageURLs.lastObject atIndex:0];
+- (void)setOriginImageURLs:(NSArray<NSString *> *)originImageURLs {
+    _originImageURLs = originImageURLs;
+    NSMutableArray *marr = [NSMutableArray arrayWithArray:originImageURLs];
+    if (originImageURLs.count > 1) {
+        [marr addObject:originImageURLs.firstObject];
+        [marr insertObject:originImageURLs.lastObject atIndex:0];
     }
     self.imageGroup = marr;
     
@@ -78,7 +77,7 @@
 - (void)configTimer {
     [self.timer invalidate];
     self.timer = nil;
-    if (self.autoScroll && self.imageURLs.count > 1) {
+    if (self.autoScroll && self.originImageURLs.count > 1) {
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.autoScrollTimeInterval target:self selector:@selector(showNext) userInfo:nil repeats:YES];
         timer.fireDate = [NSDate dateWithTimeIntervalSinceNow:self.autoScrollTimeInterval];
         self.timer = timer;
@@ -123,8 +122,8 @@
     [super layoutSubviews];
     self.flowLayout.itemSize = self.frame.size;
     self.collectionView.frame = self.bounds;
-    self.pageControl.numberOfPages = self.imageURLs.count;
-    self.pageControl.mcSize = [self.pageControl sizeForNumberOfPages:self.imageURLs.count];
+    self.pageControl.numberOfPages = self.originImageURLs.count;
+    self.pageControl.mcSize = [self.pageControl sizeForNumberOfPages:self.originImageURLs.count];
     self.pageControl.mcBottom = self.mcHeight - self.pageControl.config.bottomOffset;
     self.pageControl.mcCenterX.equalTo(self);
 }
@@ -150,7 +149,7 @@
     }
     NSInteger page = self.collectionView.contentOffset.x/self.collectionView.bounds.size.width;
     if (page == 0) {//滚动到左边
-        self.collectionView.contentOffset = CGPointMake(self.collectionView.bounds.size.width * (self.imageURLs.count - 2), 0);
+        self.collectionView.contentOffset = CGPointMake(self.collectionView.bounds.size.width * (self.imageGroup.count - 2), 0);
         self.pageControl.currentPage = self.imageGroup.count - 2;
     }else if (page == self.imageGroup.count - 1){//滚动到右边
         self.collectionView.contentOffset = CGPointMake(self.collectionView.bounds.size.width, 0);
