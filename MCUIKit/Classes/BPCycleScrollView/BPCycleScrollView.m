@@ -30,7 +30,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _autoScrollTimeInterval = 30.0;
+        _autoScrollTimeInterval = 3.0;
         _autoScroll = YES;
         _infiniteLoop = YES;
         [self configView];
