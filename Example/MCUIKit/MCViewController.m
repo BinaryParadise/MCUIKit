@@ -14,8 +14,6 @@
 @property (nonatomic, weak) IBOutlet UIView *mainView;
 @property (nonatomic, weak) IBOutlet UIView *view1;
 @property (nonatomic, weak) IBOutlet UIView *view2;
-@property (nonatomic, strong) BPCycleScrollView *cycleView;
-
 
 @end
 
@@ -28,24 +26,10 @@
     
     self.view.backgroundColor = MCHexColor(0x8c8c8c);
     
-    //轮播图
-    self.cycleView = [[BPCycleScrollView alloc] initWithFrame:CGRectMake(0, 88, self.view.mcWidth, 168)];
-    self.cycleView.backgroundColor = [UIColor whiteColor];
-    self.cycleView.autoScroll = YES;
-    NSData *imgJSONData = [NSData dataWithContentsOfFile:[NSBundle.mainBundle pathForResource:@"ImageData.json" ofType:nil]];
-    NSArray *URLs = [NSJSONSerialization JSONObjectWithData:imgJSONData options:NSJSONReadingMutableLeaves error:nil];
-    NSInteger count = URLs.count;
-    
-    self.cycleView.pageControl.config.indicatorOffset = 8;
-    self.cycleView.pageControl.config.pageIndicatorImage = [UIImage imageNamed:@"ic_dotdark"];
-    self.cycleView.pageControl.config.currentPageIndicatorImage = [UIImage imageNamed:@"ic_dotdark_current"];
-    
-    self.cycleView.imageURLs = [URLs subarrayWithRange:NSMakeRange(0, count)];
-    
-    [self.view addSubview:self.cycleView];
-    
     _mainView.mcLeft = 16;
-    _mainView.mcTop = self.cycleView.mcBottom + 16;
+    if (@available(iOS 11.0, *)) {
+        _mainView.mcTop = UIApplication.sharedApplication.keyWindow.safeAreaInsets.top + 50;
+    }
     _mainView.mcWidth = self.view.mcWidth - 16*2;
     _mainView.mcHeight = self.view.mcHeight - _mainView.mcTop - 49;
     
