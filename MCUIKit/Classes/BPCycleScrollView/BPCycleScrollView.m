@@ -30,16 +30,21 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _autoScrollTimeInterval = 3.0;
-        _autoScroll = YES;
-        _infiniteLoop = YES;
         [self configView];
-        self.autoScroll = YES;
     }
     return self;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self configView];
+}
+
 - (void)configView {
+    _autoScrollTimeInterval = 3.0;
+    _autoScroll = YES;
+    _infiniteLoop = YES;
+    
     self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
     self.flowLayout.minimumLineSpacing = 0;
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -161,6 +166,11 @@
     if ([self.delegate respondsToSelector:@selector(cycleScrollView:didScrollToIndex:)]) {
         [self.delegate cycleScrollView:self didScrollToIndex:self.pageControl.currentPage];
     }
+}
+
+- (void)dealloc {
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 @end

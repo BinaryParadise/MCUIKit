@@ -4,6 +4,7 @@ platform :ios, '8.0'
 
 target 'MCUIKit_Example' do
   pod 'MCUIKit', :path => '../'
+  pod 'MLeaksFinder'
 
   target 'MCUIKit_Tests' do
     inherit! :search_paths
