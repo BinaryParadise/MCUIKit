@@ -30,6 +30,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        NSAssert(frame.size.width>0, @"缺少宽度，可能导致第一页无法正确定位");
         [self configView];
     }
     return self;
@@ -74,7 +75,7 @@
         [marr insertObject:originImageURLs.lastObject atIndex:0];
     }
     self.imageGroup = marr;
-    
+    self.pageControl.numberOfPages = self.originImageURLs.count;
     [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width, 0)];
     [self configTimer];
 }
@@ -112,7 +113,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BPScrollCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ScrollCell" forIndexPath:indexPath];
-    NSString *imgURL = self.imageGroup[indexPath.item];
+    NSString *imgURL = self.imageGroup[indexPath.row];
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:self.placeholderImage];
     return cell;
 }
@@ -127,7 +128,6 @@
     [super layoutSubviews];
     self.flowLayout.itemSize = self.frame.size;
     self.collectionView.frame = self.bounds;
-    self.pageControl.numberOfPages = self.originImageURLs.count;
     self.pageControl.mcSize = [self.pageControl sizeForNumberOfPages:self.originImageURLs.count];
     self.pageControl.mcBottom = self.mcHeight - self.pageControl.config.bottomOffset;
     self.pageControl.mcCenterX.equalTo(self);
