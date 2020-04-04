@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "BPCycleCollectionViewLayout.h"
 #import "UIView+MCFrameGeometry.h"
+#import "NSArray+MCExtension.h"
 
 @interface BPCycleScrollView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -76,6 +77,7 @@
     }
     self.imageGroup = marr;
     self.pageControl.numberOfPages = self.originImageURLs.count;
+    [self.collectionView reloadData];
     [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width, 0)];
     [self configTimer];
 }
@@ -113,7 +115,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BPScrollCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ScrollCell" forIndexPath:indexPath];
-    NSString *imgURL = self.imageGroup[indexPath.row];
+    NSString *imgURL = [self.imageGroup mc_safeObjectAtIndex:indexPath.row];
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:self.placeholderImage];
     return cell;
 }
