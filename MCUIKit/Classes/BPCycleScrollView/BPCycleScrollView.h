@@ -38,6 +38,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) UIImage *placeholderImage;
 
+/// 默认为UIViewContentModeScaleAspectFit
+@property (nonatomic, assign) UIViewContentMode imageContentMode;
+
+
 /// 无线循环滚动，默认为YES
 @property (nonatomic, assign) BOOL infiniteLoop;
 

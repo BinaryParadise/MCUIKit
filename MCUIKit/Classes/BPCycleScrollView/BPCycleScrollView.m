@@ -32,6 +32,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         NSAssert(frame.size.width>0, @"缺少宽度，可能导致第一页无法正确定位");
+        self.imageContentMode = UIViewContentModeScaleAspectFit;
         [self configView];
     }
     return self;
@@ -115,6 +116,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BPScrollCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ScrollCell" forIndexPath:indexPath];
+    cell.imageView.contentMode = self.imageContentMode;
     NSString *imgURL = [self.imageGroup mc_safeObjectAtIndex:indexPath.row];
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:self.placeholderImage];
     return cell;

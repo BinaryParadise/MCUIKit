@@ -46,6 +46,7 @@
     self.cycleView3.pageControl.config.indicatorOffset = 8;
     self.cycleView3.pageControl.config.pageIndicatorImage = [UIImage imageNamed:@"ic_dotdark"];
     self.cycleView3.pageControl.config.currentPageIndicatorImage = [UIImage imageNamed:@"ic_dotdark_current"];
+    self.cycleView3.placeholderImage = [UIImage imageNamed:@"ic_placeholder"];
     self.cycleView3.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, count)];
     [self.view addSubview:self.cycleView3];
 }
