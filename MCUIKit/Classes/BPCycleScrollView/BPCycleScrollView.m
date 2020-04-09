@@ -12,6 +12,7 @@
 #import "BPCycleCollectionViewLayout.h"
 #import "UIView+MCFrameGeometry.h"
 #import "NSArray+MCExtension.h"
+#import "NSURL+MCExtension.h"
 
 @interface BPCycleScrollView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -120,7 +121,7 @@
     BPScrollCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ScrollCell" forIndexPath:indexPath];
     cell.imageView.contentMode = self.imageContentMode;
     NSString *imgURL = [self.imageGroup mc_safeObjectAtIndex:indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:self.placeholderImage options:SDWebImageRetryFailed];
+    [cell.imageView sd_setImageWithURL:[NSURL mc_SafeURLWithString:imgURL] placeholderImage:self.placeholderImage options:SDWebImageRetryFailed];
     return cell;
 }
 
