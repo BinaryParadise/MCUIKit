@@ -11,8 +11,8 @@
 
 @interface MCCycleViewController ()
 
-@property (nonatomic, weak) IBOutlet BPCycleScrollView *cycleView1;
-@property (nonatomic, weak) IBOutlet BPCycleScrollView *cycleView2;
+@property (nonatomic, strong) BPCycleScrollView *cycleView1;
+@property (nonatomic, strong) BPCycleScrollView *cycleView2;
 @property (nonatomic, strong) BPCycleScrollView *cycleView3;
 
 @end
@@ -28,32 +28,44 @@
     NSInteger count = URLs.count;
     
     //自动轮播图
+    self.cycleView1 = [[BPCycleScrollView alloc] initWithFrame:CGRectMake(16, 100, self.view.mcWidth-16*2, 186)];
+    self.cycleView1.layer.cornerRadius = 6;
+    self.cycleView1.layer.masksToBounds = YES;
+    self.cycleView1.autoScroll = YES;
     self.cycleView1.pageControl.config.indicatorOffset = 8;
     self.cycleView1.pageControl.config.pageIndicatorImage = [UIImage imageNamed:@"ic_dotdark"];
     self.cycleView1.pageControl.config.currentPageIndicatorImage = [UIImage imageNamed:@"ic_dotdark_current"];
     self.cycleView1.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, count)];
+    [self.view addSubview:self.cycleView1];
     
     //手动轮播图
-    self.cycleView2.autoScroll = NO;
+    self.cycleView2 = [[BPCycleScrollView alloc] initWithFrame:CGRectMake(16, self.cycleView1.mcBottom+28, self.view.mcWidth-16*2, 186)];
     self.cycleView2.pageControl.config.indicatorOffset = 8;
     self.cycleView2.pageControl.config.pageIndicatorImage = [UIImage imageNamed:@"ic_dotdark"];
     self.cycleView2.pageControl.config.currentPageIndicatorImage = [UIImage imageNamed:@"ic_dotdark_current"];
     self.cycleView2.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, count)];
+    [self.view addSubview:self.cycleView2];
     
     //手动创建
-    self.cycleView3 = [[BPCycleScrollView alloc] initWithFrame:CGRectMake(16, self.cycleView2.mcBottom+50, self.view.mcWidth-36, 222)];
-    self.cycleView3.autoScroll = NO;
+    self.cycleView3 = [[BPCycleScrollView alloc] initWithFrame:CGRectMake(16, self.cycleView2.mcBottom+28, self.view.mcWidth-16*2, 186)];
+    self.cycleView3.layer.cornerRadius = 6;
+    self.cycleView3.layer.masksToBounds = YES;
+//    self.cycleView3.autoScroll = NO;
     self.cycleView3.pageControl.config.indicatorOffset = 8;
     self.cycleView3.pageControl.config.pageIndicatorImage = [UIImage imageNamed:@"ic_dotdark"];
     self.cycleView3.pageControl.config.currentPageIndicatorImage = [UIImage imageNamed:@"ic_dotdark_current"];
     self.cycleView3.placeholderImage = [UIImage imageNamed:@"ic_placeholder"];
     self.cycleView3.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, count)];
     [self.view addSubview:self.cycleView3];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.cycleView3.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, 2)];
+    });
 }
 
 - (void)dealloc {
     self.cycleView1 = nil;
     self.cycleView2 = nil;
+    self.cycleView3 = nil;
 }
 
 @end

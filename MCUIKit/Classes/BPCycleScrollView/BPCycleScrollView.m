@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, weak) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic, strong) BPCyclePageControl *pageControl;
 @property (nonatomic, strong) NSArray<NSString *> *imageGroup;
@@ -32,24 +32,22 @@
     self = [super initWithFrame:frame];
     if (self) {
         NSAssert(frame.size.width>0, @"缺少宽度，可能导致第一页无法正确定位");
-        self.imageContentMode = UIViewContentModeScaleAspectFit;
+        self.itemSize = frame.size;
+        self.imageContentMode = UIViewContentModeScaleAspectFill;
         [self configView];
     }
     return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    [self configView];
-}
-
 - (void)configView {
     _autoScrollTimeInterval = 3.0;
-    _autoScroll = YES;
     _infiniteLoop = YES;
     
     self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    self.flowLayout.itemSize = self.itemSize;
     self.flowLayout.minimumLineSpacing = 0;
+    self.flowLayout.minimumInteritemSpacing = 0;
+    self.flowLayout.sectionInset = UIEdgeInsetsZero;
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.flowLayout];
@@ -79,7 +77,11 @@
     self.imageGroup = marr;
     self.pageControl.numberOfPages = self.originImageURLs.count;
     [self.collectionView reloadData];
-    [self.collectionView setContentOffset:CGPointMake(self.collectionView.bounds.size.width, 0)];
+    if (self.imageGroup.count > 1) {
+        //滚动到第一页（不含占位）
+        [self.collectionView setContentOffset:CGPointMake(self.mcWidth, 0)];
+    }
+    [self setNeedsLayout];
     [self configTimer];
 }
 
@@ -104,7 +106,7 @@
 - (void)showNext {
     //手指拖拽是禁止自动轮播
     if (self.collectionView.isDragging) {return;}
-    CGFloat targetX =  self.collectionView.contentOffset.x + self.collectionView.bounds.size.width;
+    CGFloat targetX =  self.collectionView.contentOffset.x + self.collectionView.mcWidth;
     [self.collectionView setContentOffset:CGPointMake(targetX, 0) animated:true];
 }
 
@@ -118,7 +120,7 @@
     BPScrollCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ScrollCell" forIndexPath:indexPath];
     cell.imageView.contentMode = self.imageContentMode;
     NSString *imgURL = [self.imageGroup mc_safeObjectAtIndex:indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:self.placeholderImage];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:self.placeholderImage options:SDWebImageRetryFailed];
     return cell;
 }
 
@@ -156,12 +158,12 @@
     if (!self.infiniteLoop) {
         return;
     }
-    NSInteger page = self.collectionView.contentOffset.x/self.collectionView.bounds.size.width;
+    NSInteger page = self.collectionView.contentOffset.x/self.mcWidth;
     if (page == 0) {//滚动到左边
-        self.collectionView.contentOffset = CGPointMake(self.collectionView.bounds.size.width * (self.imageGroup.count - 2), 0);
+        self.collectionView.contentOffset = CGPointMake(self.mcWidth * (self.imageGroup.count - 2), 0);
         self.pageControl.currentPage = self.imageGroup.count - 2;
     }else if (page == self.imageGroup.count - 1){//滚动到右边
-        self.collectionView.contentOffset = CGPointMake(self.collectionView.bounds.size.width, 0);
+        self.collectionView.contentOffset = CGPointMake(self.mcWidth, 0);
         self.pageControl.currentPage = 0;
     }else{
         self.pageControl.currentPage = page - 1;

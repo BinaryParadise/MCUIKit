@@ -25,6 +25,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// 请勿在Xib中使用
 @interface BPCycleScrollView : UIView
 
 /// 自动滚动时间间隔（默认3.0秒）
@@ -41,6 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 默认为UIViewContentModeScaleAspectFit
 @property (nonatomic, assign) UIViewContentMode imageContentMode;
 
+/// 默认为self.frame.size
+@property (nonatomic, assign) CGSize itemSize;
 
 /// 无线循环滚动，默认为YES
 @property (nonatomic, assign) BOOL infiniteLoop;

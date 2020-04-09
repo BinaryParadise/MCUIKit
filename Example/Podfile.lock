@@ -1,6 +1,6 @@
 PODS:
   - FBRetainCycleDetector (0.1.4)
-  - MCUIKit (0.3.4):
+  - MCUIKit (0.3.5):
     - SDWebImage
   - MLeaksFinder (1.0.0):
     - FBRetainCycleDetector
@@ -24,10 +24,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
-  MCUIKit: 459331b66a2861b2209d4a0c7f68592b5fbf98b1
+  MCUIKit: c3a96ee4470433245ab90c067b3f3fa6f030179f
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
 
-PODFILE CHECKSUM: b2b278558a8aa27d378dfa8445f22d64fd3ac03c
+PODFILE CHECKSUM: fd05882f2c8534fc2ecc7294489f8180af546e2a
 
 COCOAPODS: 1.9.1
