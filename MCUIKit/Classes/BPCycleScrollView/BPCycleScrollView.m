@@ -82,7 +82,6 @@
         //滚动到第一页（不含占位）
         [self.collectionView setContentOffset:CGPointMake(self.mcWidth, 0)];
     }
-    [self setNeedsLayout];
     [self configTimer];
 }
 

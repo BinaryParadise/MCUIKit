@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 自动滚动时间间隔（默认3.0秒）
 @property (nonatomic, assign) NSTimeInterval autoScrollTimeInterval;
 
-/// 是否自动滚动，默认为YES
+/// 是否自动滚动，默认为NO
 @property (nonatomic, assign) BOOL autoScroll;
 
 /// 原始图片地址数组
