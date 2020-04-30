@@ -4,6 +4,7 @@ platform :ios, '9.0'
 
 target 'MCUIKit_Example' do
   pod 'MCUIKit', :path => '../'
+  pod 'Masonry'
   pod 'MLeaksFinder'
 
   target 'MCUIKit_Tests' do

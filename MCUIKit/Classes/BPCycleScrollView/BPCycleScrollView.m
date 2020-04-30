@@ -32,7 +32,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        NSAssert(frame.size.width>0, @"缺少宽度，可能导致第一页无法正确定位");
         self.itemSize = frame.size;
         self.imageContentMode = UIViewContentModeScaleAspectFill;
         [self configView];
@@ -45,7 +44,6 @@
     _infiniteLoop = YES;
     
     self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    self.flowLayout.itemSize = self.itemSize;
     self.flowLayout.minimumLineSpacing = 0;
     self.flowLayout.minimumInteritemSpacing = 0;
     self.flowLayout.sectionInset = UIEdgeInsetsZero;
@@ -81,6 +79,7 @@
     if (self.imageGroup.count > 1) {
         //滚动到第一页（不含占位）
         [self.collectionView setContentOffset:CGPointMake(self.mcWidth, 0)];
+        [self setNeedsLayout];
     }
     [self configTimer];
 }
@@ -133,7 +132,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.flowLayout.itemSize = self.frame.size;
+    BOOL shouldInit = CGRectEqualToRect(self.collectionView.frame, CGRectZero);
     self.collectionView.frame = self.bounds;
+    if (shouldInit) {//自动布局需要初始化位置
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    }
     self.pageControl.mcSize = [self.pageControl sizeForNumberOfPages:self.originImageURLs.count];
     self.pageControl.mcBottom = self.mcHeight - self.pageControl.config.bottomOffset;
     self.pageControl.mcCenterX.equalTo(self);

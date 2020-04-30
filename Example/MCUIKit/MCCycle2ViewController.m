@@ -8,6 +8,7 @@
 
 #import "MCCycle2ViewController.h"
 #import <MCUIKit/MCUIKit.h>
+#import <Masonry/Masonry.h>
 
 @interface MCCycle2ViewController ()
 
@@ -24,8 +25,10 @@
     NSArray *URLs = [NSJSONSerialization JSONObjectWithData:imgJSONData options:NSJSONReadingMutableLeaves error:nil];
     NSInteger count = URLs.count;
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     //手动创建
-    self.cycleView3 = [[BPCycleScrollView alloc] initWithFrame:CGRectMake(16, 100, self.view.mcWidth-36, 222)];
+    self.cycleView3 = [[BPCycleScrollView alloc] init];
     self.cycleView3.layer.cornerRadius = 6;
     self.cycleView3.layer.masksToBounds = YES;
 //    self.cycleView3.autoScroll = NO;
@@ -36,6 +39,12 @@
     self.cycleView3.placeholderImage = [UIImage imageNamed:@"ic_placeholder"];
     self.cycleView3.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, count)];
     [self.view addSubview:self.cycleView3];
+    [self.cycleView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(128);
+        make.left.equalTo(self.view).offset(20);
+        make.right.equalTo(self.view).offset(-20);
+        make.height.mas_equalTo(@280);
+    }];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            self.cycleView3.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, 2)];
