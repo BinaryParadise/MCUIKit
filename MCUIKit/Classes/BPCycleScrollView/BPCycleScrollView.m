@@ -134,7 +134,7 @@
     self.flowLayout.itemSize = self.frame.size;
     BOOL shouldInit = CGRectEqualToRect(self.collectionView.frame, CGRectZero);
     self.collectionView.frame = self.bounds;
-    if (shouldInit) {//自动布局需要初始化位置
+    if (shouldInit && self.originImageURLs.count > 1) {//自动布局需要初始化位置
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
     self.pageControl.mcSize = [self.pageControl sizeForNumberOfPages:self.originImageURLs.count];
