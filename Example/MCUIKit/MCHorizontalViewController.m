@@ -6,10 +6,10 @@
 //  Copyright © 2020年 MC-Studio. All rights reserved.
 //
 
-#import "MCCycleViewController.h"
+#import "MCHorizontalViewController.h"
 #import <MCUIKit/MCUIKit.h>
 
-@interface MCCycleViewController ()
+@interface MCHorizontalViewController ()
 
 @property (nonatomic, strong) BPCycleScrollView *cycleView1;
 @property (nonatomic, strong) BPCycleScrollView *cycleView2;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation MCCycleViewController
+@implementation MCHorizontalViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

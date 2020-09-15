@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E71FA3889390AB4C904A23E /* libPods-MCUIKit_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 595F5CA88D7F0323CB628D25 /* libPods-MCUIKit_Tests.a */; };
 		2467C0242415FF850035FBC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2467C0222415FF850035FBC8 /* Main.storyboard */; };
-		247637122417CFBE009C251D /* MCCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247637112417CFBE009C251D /* MCCycleViewController.m */; };
+		247637122417CFBE009C251D /* MCHorizontalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247637112417CFBE009C251D /* MCHorizontalViewController.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -24,6 +24,7 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		95B749B9200F8EAE5109C8E7 /* libPods-MCUIKit_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A519320CF22E5ECDF2597597 /* libPods-MCUIKit_Example.a */; };
 		C56021BC1FE39E1600B32164 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C56021BB1FE39E1600B32164 /* UIImage+UIColor.m */; };
+		C90C38D72510594A00CD5115 /* MCVerticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C38D62510594A00CD5115 /* MCVerticalViewController.m */; };
 		C90F26AB243EC70300D71789 /* MCCycle2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F26AA243EC70300D71789 /* MCCycle2ViewController.m */; };
 		C963F7332408957400EB58D6 /* ImageData.json in Resources */ = {isa = PBXBuildFile; fileRef = C963F7322408957400EB58D6 /* ImageData.json */; };
 /* End PBXBuildFile section */
@@ -40,8 +41,8 @@
 
 /* Begin PBXFileReference section */
 		2467C0232415FF850035FBC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		247637102417CFBE009C251D /* MCCycleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCCycleViewController.h; sourceTree = "<group>"; };
-		247637112417CFBE009C251D /* MCCycleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCCycleViewController.m; sourceTree = "<group>"; };
+		247637102417CFBE009C251D /* MCHorizontalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCHorizontalViewController.h; sourceTree = "<group>"; };
+		247637112417CFBE009C251D /* MCHorizontalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCHorizontalViewController.m; sourceTree = "<group>"; };
 		595F5CA88D7F0323CB628D25 /* libPods-MCUIKit_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MCUIKit_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* MCUIKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCUIKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -68,6 +69,8 @@
 		C56021BB1FE39E1600B32164 /* UIImage+UIColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIImage+UIColor.m"; path = "../../MCUIKit/Classes/Category/UIImage+UIColor.m"; sourceTree = "<group>"; };
 		C59580D62027F30600C2331A /* UIColor+MCExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIColor+MCExtension.h"; path = "../../MCUIKit/Classes/Category/UIColor+MCExtension.h"; sourceTree = "<group>"; };
 		C59580D72027F30600C2331A /* UIColor+MCExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MCExtension.m"; path = "../../MCUIKit/Classes/Category/UIColor+MCExtension.m"; sourceTree = "<group>"; };
+		C90C38D52510594A00CD5115 /* MCVerticalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCVerticalViewController.h; sourceTree = "<group>"; };
+		C90C38D62510594A00CD5115 /* MCVerticalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCVerticalViewController.m; sourceTree = "<group>"; };
 		C90F26A9243EC70300D71789 /* MCCycle2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCCycle2ViewController.h; sourceTree = "<group>"; };
 		C90F26AA243EC70300D71789 /* MCCycle2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCCycle2ViewController.m; sourceTree = "<group>"; };
 		C963F7322408957400EB58D6 /* ImageData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ImageData.json; sourceTree = "<group>"; };
@@ -157,8 +160,10 @@
 				6003F59D195388D20070C39A /* MCAppDelegate.m */,
 				6003F5A5195388D20070C39A /* MCViewController.h */,
 				6003F5A6195388D20070C39A /* MCViewController.m */,
-				247637102417CFBE009C251D /* MCCycleViewController.h */,
-				247637112417CFBE009C251D /* MCCycleViewController.m */,
+				247637102417CFBE009C251D /* MCHorizontalViewController.h */,
+				247637112417CFBE009C251D /* MCHorizontalViewController.m */,
+				C90C38D52510594A00CD5115 /* MCVerticalViewController.h */,
+				C90C38D62510594A00CD5115 /* MCVerticalViewController.m */,
 				C90F26A9243EC70300D71789 /* MCCycle2ViewController.h */,
 				C90F26AA243EC70300D71789 /* MCCycle2ViewController.m */,
 				2467C0222415FF850035FBC8 /* Main.storyboard */,
@@ -356,11 +361,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90F26AB243EC70300D71789 /* MCCycle2ViewController.m in Sources */,
-				247637122417CFBE009C251D /* MCCycleViewController.m in Sources */,
+				247637122417CFBE009C251D /* MCHorizontalViewController.m in Sources */,
 				6003F59E195388D20070C39A /* MCAppDelegate.m in Sources */,
 				C56021BC1FE39E1600B32164 /* UIImage+UIColor.m in Sources */,
 				6003F5A7195388D20070C39A /* MCViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				C90C38D72510594A00CD5115 /* MCVerticalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

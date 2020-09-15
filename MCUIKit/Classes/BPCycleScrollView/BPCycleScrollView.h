@@ -52,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<BPCycleScrollViewDelegate> delegate;
 
+- (instancetype)initWithFrame:(CGRect)frame scrollDirection:(UICollectionViewScrollDirection)direction;
 
 @end
 

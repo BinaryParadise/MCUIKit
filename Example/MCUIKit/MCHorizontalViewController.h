@@ -1,5 +1,5 @@
 //
-//  MCCycleViewController.h
+//  MCHorizontalViewController.h
 //  MCUIKit_Example
 //
 //  Created by Rake Yang on 2020/3/10.
@@ -10,7 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MCCycleViewController : UIViewController
+/// 水平轮播图
+@interface MCHorizontalViewController : UIViewController
 
 @end
 

@@ -24,19 +24,29 @@
 @property (nonatomic, strong) BPCyclePageControl *pageControl;
 @property (nonatomic, strong) NSArray<NSString *> *imageGroup;
 
+@property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;
+
+
 @end
 
 @implementation BPCycleScrollView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
+- (instancetype)initWithFrame:(CGRect)frame {
+    return [self initWithFrame:frame scrollDirection:UICollectionViewScrollDirectionHorizontal];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame scrollDirection:(UICollectionViewScrollDirection)direction {
+    if (self = [super initWithFrame:frame]) {
+        self.scrollDirection = direction;
         self.itemSize = frame.size;
         self.imageContentMode = UIViewContentModeScaleAspectFill;
         [self configView];
     }
     return self;
+}
+
+- (BOOL)horizontal {
+    return self.scrollDirection == UICollectionViewScrollDirectionHorizontal;
 }
 
 - (void)configView {
@@ -47,7 +57,7 @@
     self.flowLayout.minimumLineSpacing = 0;
     self.flowLayout.minimumInteritemSpacing = 0;
     self.flowLayout.sectionInset = UIEdgeInsetsZero;
-    self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    self.flowLayout.scrollDirection = self.scrollDirection;
     
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.flowLayout];
     self.collectionView.dataSource = self;
@@ -105,8 +115,10 @@
 - (void)showNext {
     //手指拖拽是禁止自动轮播
     if (self.collectionView.isDragging) {return;}
-    CGFloat targetX =  self.collectionView.contentOffset.x + self.collectionView.mcWidth;
-    [self.collectionView setContentOffset:CGPointMake(targetX, 0) animated:true];
+    
+    CGFloat targetY = self.scrollDirection == UICollectionViewScrollDirectionVertical ? (self.collectionView.contentOffset.y + self.collectionView.mcHeight):0;
+    CGFloat targetX = self.scrollDirection == UICollectionViewScrollDirectionVertical ? 0:(self.collectionView.contentOffset.x + self.collectionView.mcWidth);
+    [self.collectionView setContentOffset:CGPointMake(targetX, targetY) animated:true];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -161,12 +173,25 @@
     if (!self.infiniteLoop) {
         return;
     }
-    NSInteger page = self.collectionView.contentOffset.x/self.mcWidth;
-    if (page == 0) {//滚动到左边
-        self.collectionView.contentOffset = CGPointMake(self.mcWidth * (self.imageGroup.count - 2), 0);
+    
+    NSInteger page = [self horizontal]?self.collectionView.contentOffset.x/self.mcWidth : self.collectionView.contentOffset.y/self.mcHeight;
+    if (page == 0) {
+        if ([self horizontal]) {
+            //滚动到左边
+            self.collectionView.contentOffset = CGPointMake(self.mcWidth * (self.imageGroup.count - 2), 0);
+        } else {
+            //滚动到顶部
+            self.collectionView.contentOffset = CGPointMake(self.mcHeight * (self.imageGroup.count - 2), 0);
+        }
         self.pageControl.currentPage = self.imageGroup.count - 2;
-    }else if (page == self.imageGroup.count - 1){//滚动到右边
-        self.collectionView.contentOffset = CGPointMake(self.mcWidth, 0);
+    }else if (page == self.imageGroup.count - 1){
+        if ([self horizontal]) {
+            //滚动到右边
+            self.collectionView.contentOffset = CGPointMake(self.mcWidth, 0);
+        } else {
+            //滚动到底部
+            self.collectionView.contentOffset = CGPointMake(0, self.mcHeight);
+        }
         self.pageControl.currentPage = 0;
     }else{
         self.pageControl.currentPage = page - 1;
