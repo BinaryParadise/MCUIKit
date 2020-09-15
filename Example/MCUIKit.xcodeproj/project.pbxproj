@@ -25,6 +25,7 @@
 		95B749B9200F8EAE5109C8E7 /* libPods-MCUIKit_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A519320CF22E5ECDF2597597 /* libPods-MCUIKit_Example.a */; };
 		C56021BC1FE39E1600B32164 /* UIImage+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C56021BB1FE39E1600B32164 /* UIImage+UIColor.m */; };
 		C90C38D72510594A00CD5115 /* MCVerticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C38D62510594A00CD5115 /* MCVerticalViewController.m */; };
+		C90C38DA25105FC400CD5115 /* MCFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90C38D925105FC400CD5115 /* MCFullScreenViewController.m */; };
 		C90F26AB243EC70300D71789 /* MCCycle2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C90F26AA243EC70300D71789 /* MCCycle2ViewController.m */; };
 		C963F7332408957400EB58D6 /* ImageData.json in Resources */ = {isa = PBXBuildFile; fileRef = C963F7322408957400EB58D6 /* ImageData.json */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,8 @@
 		C59580D72027F30600C2331A /* UIColor+MCExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MCExtension.m"; path = "../../MCUIKit/Classes/Category/UIColor+MCExtension.m"; sourceTree = "<group>"; };
 		C90C38D52510594A00CD5115 /* MCVerticalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCVerticalViewController.h; sourceTree = "<group>"; };
 		C90C38D62510594A00CD5115 /* MCVerticalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCVerticalViewController.m; sourceTree = "<group>"; };
+		C90C38D825105FC400CD5115 /* MCFullScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCFullScreenViewController.h; sourceTree = "<group>"; };
+		C90C38D925105FC400CD5115 /* MCFullScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCFullScreenViewController.m; sourceTree = "<group>"; };
 		C90F26A9243EC70300D71789 /* MCCycle2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCCycle2ViewController.h; sourceTree = "<group>"; };
 		C90F26AA243EC70300D71789 /* MCCycle2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCCycle2ViewController.m; sourceTree = "<group>"; };
 		C963F7322408957400EB58D6 /* ImageData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ImageData.json; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				247637112417CFBE009C251D /* MCHorizontalViewController.m */,
 				C90C38D52510594A00CD5115 /* MCVerticalViewController.h */,
 				C90C38D62510594A00CD5115 /* MCVerticalViewController.m */,
+				C90C38D825105FC400CD5115 /* MCFullScreenViewController.h */,
+				C90C38D925105FC400CD5115 /* MCFullScreenViewController.m */,
 				C90F26A9243EC70300D71789 /* MCCycle2ViewController.h */,
 				C90F26AA243EC70300D71789 /* MCCycle2ViewController.m */,
 				2467C0222415FF850035FBC8 /* Main.storyboard */,
@@ -361,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C90F26AB243EC70300D71789 /* MCCycle2ViewController.m in Sources */,
+				C90C38DA25105FC400CD5115 /* MCFullScreenViewController.m in Sources */,
 				247637122417CFBE009C251D /* MCHorizontalViewController.m in Sources */,
 				6003F59E195388D20070C39A /* MCAppDelegate.m in Sources */,
 				C56021BC1FE39E1600B32164 /* UIImage+UIColor.m in Sources */,

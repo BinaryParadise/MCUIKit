@@ -37,7 +37,7 @@
     self.cycleView3.pageControl.config.indicatorOffset = 8;
     self.cycleView3.pageControl.config.pageIndicatorImage = [UIImage imageNamed:@"ic_dotdark"];
     self.cycleView3.pageControl.config.currentPageIndicatorImage = [UIImage imageNamed:@"ic_dotdark_current"];
-    self.cycleView3.placeholderImage = [UIImage imageNamed:@"ic_placeholder"];
+    self.cycleView3.placeholderImage = [UIImage mc_imageWithColor:[UIColor mc_colorWithHex:0xCCCCCC] size:CGSizeMake(self.view.mcWidth, self.view.mcWidth)];
     self.cycleView3.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, count)];
     [self.view addSubview:self.cycleView3];
     [self.cycleView3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -55,11 +55,10 @@
     self.cycleView4 = [[BPCycleScrollView alloc] init];
     self.cycleView4.layer.cornerRadius = 6;
     self.cycleView4.layer.masksToBounds = YES;
-    self.cycleView4.backgroundColor = [UIColor purpleColor];
     self.cycleView4.pageControl.config.indicatorOffset = 8;
     self.cycleView4.pageControl.config.pageIndicatorImage = [UIImage imageNamed:@"ic_dotdark"];
     self.cycleView4.pageControl.config.currentPageIndicatorImage = [UIImage imageNamed:@"ic_dotdark_current"];
-    self.cycleView4.placeholderImage = [UIImage imageNamed:@"ic_placeholder"];
+    self.cycleView4.placeholderImage = [UIImage mc_imageWithColor:[UIColor mc_colorWithHex:0xCCCCCC] size:CGSizeMake(self.view.mcWidth, self.view.mcWidth)];
     self.cycleView4.originImageURLs = @[@""];
     [self.view addSubview:self.cycleView4];
     [self.cycleView4 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -70,7 +69,7 @@
     }];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            self.cycleView3.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, 2)];
+            self.cycleView4.originImageURLs = [URLs subarrayWithRange:NSMakeRange(0, 2)];
     });
 }
 

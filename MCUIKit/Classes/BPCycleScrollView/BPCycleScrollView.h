@@ -11,6 +11,8 @@
 
 @class BPCycleScrollView;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol BPCycleScrollViewDelegate <NSObject>
 
 @optional
@@ -23,8 +25,6 @@
 
 @end
 
-NS_ASSUME_NONNULL_BEGIN
-
 /// 请勿在Xib中使用
 @interface BPCycleScrollView : UIView
 
@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 是否自动滚动，默认为NO
 @property (nonatomic, assign) BOOL autoScroll;
 
-/// 原始图片地址数组
+/// 原始图片地址数组（自定义数据源时无效）
 @property (nonatomic, copy) NSArray<NSString *> *originImageURLs;
 
 @property (nonatomic, copy) UIImage *placeholderImage;
@@ -51,6 +51,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) BPCyclePageControl *pageControl;
 
 @property (nonatomic, weak) id<BPCycleScrollViewDelegate> delegate;
+
+@property (nonatomic, strong, readonly) UICollectionView *collectionView;
+
+/// 自定义数据源
+@property (nonatomic, weak) id<UICollectionViewDataSource> customDataSource;
 
 - (instancetype)initWithFrame:(CGRect)frame scrollDirection:(UICollectionViewScrollDirection)direction;
 

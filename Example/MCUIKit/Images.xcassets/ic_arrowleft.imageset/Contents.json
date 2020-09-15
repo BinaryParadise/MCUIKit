@@ -5,18 +5,18 @@
       "scale" : "1x"
     },
     {
+      "filename" : "ic_live_arrowleft@2x.png",
       "idiom" : "universal",
-      "filename" : "矩形@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "ic_live_arrowleft@3x.png",
       "idiom" : "universal",
-      "filename" : "矩形@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

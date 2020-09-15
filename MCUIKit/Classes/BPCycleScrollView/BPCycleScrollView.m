@@ -13,6 +13,7 @@
 #import "UIView+MCFrameGeometry.h"
 #import "NSArray+MCExtension.h"
 #import "NSURL+MCExtension.h"
+#import "NSTimer+MCBlock.h"
 
 @interface BPCycleScrollView () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -67,9 +68,10 @@
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.directionalLockEnabled = YES;
     [self addSubview:self.collectionView];
     
-    [self.collectionView registerClass:BPScrollCollectionViewCell.class forCellWithReuseIdentifier:@"ScrollCell"];
+    [self.collectionView registerClass:BPScrollCollectionViewCell.class forCellWithReuseIdentifier:NSStringFromClass(BPScrollCollectionViewCell.class)];
     
     self.pageControl = [[BPCyclePageControl alloc] init];
     [self addSubview:self.pageControl];
@@ -98,15 +100,21 @@
     [self.timer invalidate];
     self.timer = nil;
     if (self.autoScroll && self.originImageURLs.count > 1) {
-        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.autoScrollTimeInterval target:self selector:@selector(showNext) userInfo:nil repeats:YES];
-        timer.fireDate = [NSDate dateWithTimeIntervalSinceNow:self.autoScrollTimeInterval];
-        self.timer = timer;
+        __weak typeof(self) weakSelf = self;
+        self.timer = [NSTimer mc_scheduledTimerWithTimeInterval:self.autoScrollTimeInterval repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [weakSelf showNext];
+        }];
+        self.timer.fireDate = [NSDate dateWithTimeIntervalSinceNow:self.autoScrollTimeInterval];
     }
 }
 
 - (void)setAutoScroll:(BOOL)autoScroll {
     _autoScroll = autoScroll;
     [self configTimer];
+}
+
+- (void)setCustomDataSource:(id<UICollectionViewDataSource>)customDataSource {
+    self.collectionView.dataSource = customDataSource;
 }
 
 #pragma mark - Actions
@@ -128,7 +136,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    BPScrollCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ScrollCell" forIndexPath:indexPath];
+    BPScrollCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(BPScrollCollectionViewCell.class) forIndexPath:indexPath];
     cell.imageView.contentMode = self.imageContentMode;
     NSString *imgURL = [self.imageGroup mc_safeObjectAtIndex:indexPath.row];
     [cell.imageView sd_setImageWithURL:[NSURL mc_SafeURLWithString:imgURL] placeholderImage:self.placeholderImage options:SDWebImageRetryFailed];
@@ -137,7 +145,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.delegate respondsToSelector:@selector(cycleScrollView:didSelectItemAtIndex:)]) {
-        [self.delegate cycleScrollView:self didSelectItemAtIndex:self.pageControl.currentPage];
+        if (self.infiniteLoop) {
+            [self.delegate cycleScrollView:self didSelectItemAtIndex:self.pageControl.currentPage];
+        } else {
+            [self.delegate cycleScrollView:self didSelectItemAtIndex:indexPath.row];
+        }
     }
 }
 
