@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MCUIKit'
-  s.version          = '0.3.8'
+  s.version          = '0.3.9'
   s.summary          = 'Additions for iOS UIKit.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -22,6 +22,6 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
   s.source_files = 'MCUIKit/Classes/**/*'
   
-  s.dependency  'SDWebImage', '~> 5.4'
+  s.dependency  'SDWebImage'
 
 end

@@ -1,8 +1,8 @@
 PODS:
   - FBRetainCycleDetector (0.1.4)
   - Masonry (1.1.0)
-  - MCUIKit (0.3.8):
-    - SDWebImage (~> 5.4)
+  - MCUIKit (0.3.9):
+    - SDWebImage
   - MLeaksFinder (1.0.0):
     - FBRetainCycleDetector
   - SDWebImage (5.5.2):
@@ -28,7 +28,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MCUIKit: cc77732af1004c1ca071c8d9f318eba9fe0f19fd
+  MCUIKit: e57d8c67433660d55c2b1f6845abfaceec765cab
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   SDWebImage: 4d5c027c935438f341ed33dbac53ff9f479922ca
 
